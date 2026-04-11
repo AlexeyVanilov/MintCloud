@@ -11,7 +11,7 @@
 
             string name = parts[0];
 
-            Command command = CommandManager.GetCommand(name);
+            ICommand command = CommandManager.GetCommand(name);
 
             if (command != null) {
                 string[] args = new string[parts.Length - 1];

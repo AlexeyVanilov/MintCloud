@@ -24,7 +24,9 @@ namespace Examples {
                 CommandProcessor.Execute(input);
             }
         }
-
+        /// <summary>
+        /// Example functions
+        /// </summary>
         public static void SetupCommands()
         {
             Command echoCmd = new Command("echo", (args) => {
@@ -35,7 +37,6 @@ namespace Examples {
                 }
                 WriteLine(string.Join(" ", args));
             });
-
             Command exitCmd = new Command("exit", (args) => {
                 IsRunning = false;
                 SetColor(ConsoleColor.Red);

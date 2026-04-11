@@ -6,11 +6,11 @@ namespace CommandSystem {
     /// </summary>
     public static class CommandManager
     {
-        private static readonly Dictionary<string, Command> _commands = new(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, ICommand> _commands = new(StringComparer.OrdinalIgnoreCase);
 
-        public static void Register(Command cmd) => _commands[cmd.Info.Name] = cmd;
+        public static void Register(ICommand cmd) => _commands[cmd.Info.Name] = cmd;
 
-        public static Command GetCommand(string name)
+        public static ICommand GetCommand(string name)
         {
             _commands.TryGetValue(name, out var cmd);
             return cmd;
