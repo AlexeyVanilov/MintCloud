@@ -1,6 +1,6 @@
 # CommandSystem
 
-A lightweight, high-performance command processing library for C# applications. Designed with a focus on low-latency execution and memory efficiency.
+A lightweight, high-performance command processing library for C# applications.
 
 ## 🚀 Getting Started
 
