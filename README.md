@@ -13,9 +13,3 @@ You can quickly integrate the library into your project by downloading the lates
 ### Learn by Example
 The best way to understand how to use the library is to check out our sample implementation.
 * Explore [Examples/Program.cs](Examples/Program.cs) to see how to register commands, handle logic, and run a command loop.
-
-## 🛠 Key Features
-
-* **Fast Lookup:** Uses `Dictionary` with `OrdinalIgnoreCase` for $O(1)$ command retrieval.
-* **Performance Optimized:** Leverages `MethodImplOptions.AggressiveInlining` and `Array.Copy` to minimize overhead and GC pressure.
-* **Clean Architecture:** Strict separation between `CommandManager` (storage) and `CommandProcessor` (logic).
