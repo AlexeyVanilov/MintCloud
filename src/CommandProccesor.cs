@@ -1,17 +1,21 @@
-﻿namespace CommandSystem {
+﻿using CommandSystem.Logs;
+
+namespace CommandSystem {
     /// <summary>
     /// This class getting the command and proccesing it
     /// </summary>
     public static class CommandProcessor {
-        public static bool Execute(string input) {
-            if (string.IsNullOrWhiteSpace(input)) return false;
+        public static bool Execute(ICommandService commandService, string input) {
+            if (string.IsNullOrWhiteSpace(input)) {
+                throw new ArgumentException(ErrorLog.nullCommandName);
+            }
 
             string[] parts = Dispatch(input);
             if (parts.Length == 0) return false;
 
             string name = parts[0];
 
-            ICommand command = CommandManager.GetCommand(name);
+            ICommand command = commandService.GetCommand(name);
 
             if (command != null) {
                 string[] args = new string[parts.Length - 1];

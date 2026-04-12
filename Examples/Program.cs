@@ -8,6 +8,7 @@ namespace Examples {
             get => isRunning;
             set => isRunning = value;
         }
+        private static CommandManager commandManager;
         /// <summary>
         /// test commands
         /// </summary>
@@ -21,7 +22,7 @@ namespace Examples {
             /// </summary>
             while (IsRunning) {
                 string? input = Console.ReadLine();
-                CommandProcessor.Execute(input);
+                CommandProcessor.Execute(commandManager, input);
             }
         }
         /// <summary>
@@ -29,6 +30,7 @@ namespace Examples {
         /// </summary>
         public static void SetupCommands()
         {
+            commandManager = new CommandManager();
             Command echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);
@@ -43,8 +45,8 @@ namespace Examples {
                 WriteLine("Quit...");
             });
 
-            CommandManager.Register(echoCmd);
-            CommandManager.Register(exitCmd);
+            commandManager.Register(echoCmd);
+            commandManager.Register(exitCmd);
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteLine(string msg) => Console.WriteLine(msg);
