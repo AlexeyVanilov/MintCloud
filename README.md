@@ -19,16 +19,3 @@ The best way to understand how to use the library is to check out our sample imp
 * **Fast Lookup:** Uses `Dictionary` with `OrdinalIgnoreCase` for $O(1)$ command retrieval.
 * **Performance Optimized:** Leverages `MethodImplOptions.AggressiveInlining` and `Array.Copy` to minimize overhead and GC pressure.
 * **Clean Architecture:** Strict separation between `CommandManager` (storage) and `CommandProcessor` (logic).
-
-## 💻 Basic Usage Snippet
-
-```csharp
-using CommandSystem;
-
-// Quick registration example
-CommandManager.Register(new Command("ping", (args) => {
-    Console.WriteLine("Pong!");
-}));
-
-// Processing input
-CommandProcessor.Execute("ping");
