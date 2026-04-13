@@ -2,5 +2,6 @@
     public interface ICommand {
         CommandInfo Info { get; }
         void Execute(string[] args);
+        Task AsyncExecute(string[] args);
     }
 }

@@ -8,7 +8,7 @@ namespace Examples {
             get => isRunning;
             set => isRunning = value;
         }
-        private static CommandManager commandManager;
+        private static ICommandService commandManager;
         /// <summary>
         /// test commands
         /// </summary>
@@ -31,19 +31,19 @@ namespace Examples {
         public static void SetupCommands()
         {
             commandManager = new CommandManager();
-            Command echoCmd = new Command("echo", (args) => {
+            ICommand echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);
                     WriteLine("Enter message!");
                     return;
                 }
                 WriteLine(string.Join(" ", args));
-            });
-            Command exitCmd = new Command("exit", (args) => {
+            }, aliases: new[] {"e", "msg"});
+            ICommand exitCmd = new Command("exit", (args) => {
                 IsRunning = false;
                 SetColor(ConsoleColor.Red);
                 WriteLine("Quit...");
-            });
+            }, aliases: new[] { "quit" });
 
             commandManager.Register(echoCmd);
             commandManager.Register(exitCmd);

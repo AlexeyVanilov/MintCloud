@@ -1,4 +1,4 @@
-﻿using CommandSystem.Logs;
+﻿using MintCloud.Utils;
 
 namespace CommandSystem {
     /// <summary>
@@ -7,10 +7,10 @@ namespace CommandSystem {
     public static class CommandProcessor {
         public static bool Execute(ICommandService commandService, string input) {
             if (string.IsNullOrWhiteSpace(input)) {
-                throw new ArgumentException(ErrorLog.nullCommandName);
+                return false;
             }
-
-            string[] parts = Dispatch(input);
+            
+            string[] parts = StringUtils.Dispatch(input);
             if (parts.Length == 0) return false;
 
             string name = parts[0];
@@ -18,16 +18,11 @@ namespace CommandSystem {
             ICommand command = commandService.GetCommand(name);
 
             if (command != null) {
-                string[] args = new string[parts.Length - 1];
-                Array.Copy(parts, 1, args, 0, parts.Length - 1);
-
+                string[] args = StringUtils.Slice(parts);
                 command.Execute(args);
                 return true;
             }
             return false;
         }
-
-        private static string[] Dispatch(string input) =>
-            input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
     }
 }
