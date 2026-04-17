@@ -1,4 +1,4 @@
-﻿namespace CommandSystem {
+﻿namespace CommandSystem.Models {
     /// <summary>
     /// Metadata of command
     /// </summary>

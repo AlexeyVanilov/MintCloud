@@ -1,4 +1,4 @@
-﻿namespace CommandSystem.Logs {
+﻿namespace CommandSystem.LogSystem {
     /// <summary>
     /// All error logs
     /// </summary>

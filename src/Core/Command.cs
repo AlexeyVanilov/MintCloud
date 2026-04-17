@@ -1,6 +1,8 @@
-﻿using CommandSystem.Logs;
+﻿using CommandSystem.LogSystem;
+using CommandSystem.Models;
+using CommandSystem.Specs;
 
-namespace CommandSystem {
+namespace CommandSystem.Core {
     /// <summary>
     /// Command that can takes some args
     /// </summary>

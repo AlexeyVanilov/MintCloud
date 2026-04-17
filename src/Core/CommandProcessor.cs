@@ -1,6 +1,7 @@
-﻿using MintCloud.Utils;
+﻿using CommandSystem.Utils;
+using CommandSystem.Specs;
 
-namespace CommandSystem {
+namespace CommandSystem.Core {
     /// <summary>
     /// This class getting the command and proccesing it
     /// </summary>

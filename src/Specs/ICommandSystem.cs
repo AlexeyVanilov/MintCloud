@@ -1,4 +1,4 @@
-﻿namespace CommandSystem {
+﻿namespace CommandSystem.Specs {
     public interface ICommandService {
         void Register(ICommand cmd);
         bool GetCommand(string s, out ICommand cmd);

@@ -1,4 +1,5 @@
-﻿using CommandSystem;
+﻿using CommandSystem.Core;
+using CommandSystem.Specs;
 using System.Runtime.CompilerServices;
 
 namespace Examples {

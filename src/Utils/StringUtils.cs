@@ -1,4 +1,4 @@
-﻿namespace MintCloud.Utils {
+﻿namespace CommandSystem.Utils {
     /// <summary>
     /// Static-class helper
     /// </summary>

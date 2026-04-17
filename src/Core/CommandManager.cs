@@ -1,6 +1,7 @@
-﻿using CommandSystem.Logs;
+﻿using CommandSystem.LogSystem;
+using CommandSystem.Specs;
 
-namespace CommandSystem {
+namespace CommandSystem.Core {
     public sealed class CommandManager : ICommandService
     {
         private readonly Dictionary<string, ICommand> _commands = new(StringComparer.OrdinalIgnoreCase);
