@@ -15,9 +15,8 @@ namespace CommandSystem {
 
             string name = parts[0];
 
-            ICommand command = commandService.GetCommand(name);
-
-            if (command != null) {
+            ICommand command;
+            if(commandService.GetCommand(name, out command)) {
                 string[] args = StringUtils.Slice(parts);
                 command.Execute(args);
                 return true;
