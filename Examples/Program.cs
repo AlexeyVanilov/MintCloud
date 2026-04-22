@@ -33,7 +33,7 @@ namespace Examples {
             commandManager = new CommandManager();
 
             CommandEventResult.onCommandAccepted += WriteLine;
-            CommandEventResult.onCommandNotFinded += WriteLine;
+            CommandEventResult.onCommandNotFound += WriteLine;
             ICommand echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);
