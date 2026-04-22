@@ -7,7 +7,7 @@ namespace CommandSystem.Core {
         private readonly Dictionary<string, ICommand> _commands = new(StringComparer.OrdinalIgnoreCase);
 
         public override void Register(ICommand cmd) {
-            if (cmd == null) throw new ArgumentNullException(ErrorLog.nullCommandValue);
+            if (cmd == null) throw new ArgumentNullException(Messages.nullCommandValue);
             _commands[cmd.Info.Name] = cmd;
 
             if (cmd.Info.Aliases != null) {
