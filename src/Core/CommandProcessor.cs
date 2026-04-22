@@ -6,7 +6,7 @@ namespace CommandSystem.Core {
     /// This class getting the command and proccesing it
     /// </summary>
     public static class CommandProcessor {
-        public static bool Execute(ICommandService commandService, string input) {
+        public static bool Execute(BaseCommandSystem commandService, string input) {
             if (string.IsNullOrWhiteSpace(input)) {
                 return false;
             }

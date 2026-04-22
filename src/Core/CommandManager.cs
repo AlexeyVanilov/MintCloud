@@ -2,12 +2,11 @@
 using CommandSystem.Specs;
 
 namespace CommandSystem.Core {
-    public sealed class CommandManager : ICommandService
+    public sealed class CommandManager : BaseCommandSystem
     {
         private readonly Dictionary<string, ICommand> _commands = new(StringComparer.OrdinalIgnoreCase);
 
-        public void Register(ICommand cmd)
-        {
+        public override void Register(ICommand cmd) {
             if (cmd == null) throw new ArgumentNullException(ErrorLog.nullCommandValue);
             _commands[cmd.Info.Name] = cmd;
 
@@ -18,12 +17,12 @@ namespace CommandSystem.Core {
             }
         }
 
-        public bool GetCommand(string name, out ICommand command)
+        public override bool GetCommand(string name, out ICommand command)
             => _commands.TryGetValue(name, out command);
 
-        public IEnumerable<ICommand> GetAllCommands() => _commands.Values;
+        public override IEnumerable<ICommand> GetAllCommands() => _commands.Values;
 
-        public int CommandsCount => _commands.Count;
-        public bool CheckAliase(ICommand command) => command.Info.Aliases != null && command.Info.Aliases.Length > 0;
+        public override int CommandsCount => _commands.Count;
+        public override bool CheckAliase(ICommand command) => command.Info.Aliases != null && command.Info.Aliases.Length > 0;
     }
 }

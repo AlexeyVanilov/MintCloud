@@ -9,7 +9,7 @@ namespace Examples {
             get => isRunning;
             set => isRunning = value;
         }
-        private static ICommandService commandManager;
+        private static BaseCommandSystem commandManager;
         /// <summary>
         /// test commands
         /// </summary>
