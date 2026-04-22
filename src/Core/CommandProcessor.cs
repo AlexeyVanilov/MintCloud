@@ -1,5 +1,6 @@
 ﻿using CommandSystem.Utils;
 using CommandSystem.Specs;
+using CommandSystem.Models;
 
 namespace CommandSystem.Core {
     /// <summary>
@@ -20,8 +21,10 @@ namespace CommandSystem.Core {
             if(commandService.GetCommand(name, out command)) {
                 string[] args = StringUtils.Slice(parts);
                 command.Execute(args);
+                CommandEventResult.onCommandNotFinded?.Invoke(Messages.commandAccepted);
                 return true;
             }
+            CommandEventResult.onCommandNotFinded?.Invoke(Messages.commandNotFinded);
             return false;
         }
     }

@@ -1,6 +1,5 @@
 ﻿using CommandSystem.Core;
 using CommandSystem.Specs;
-using System.Runtime.CompilerServices;
 
 namespace Examples {
     public static class Program {
@@ -32,6 +31,9 @@ namespace Examples {
         public static void SetupCommands()
         {
             commandManager = new CommandManager();
+
+            CommandEventResult.onCommandAccepted += WriteLine;
+            CommandEventResult.onCommandNotFinded += WriteLine;
             ICommand echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);
@@ -49,9 +51,7 @@ namespace Examples {
             commandManager.Register(echoCmd);
             commandManager.Register(exitCmd);
         }
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void WriteLine(string msg) => Console.WriteLine(msg);
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void SetColor(ConsoleColor col) {
             Console.ForegroundColor = col;
         }

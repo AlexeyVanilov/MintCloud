@@ -1,4 +1,4 @@
-﻿using CommandSystem.LogSystem;
+﻿using CommandSystem.Models;
 using CommandSystem.Specs;
 
 namespace CommandSystem.Core {
