@@ -9,6 +9,7 @@ namespace Examples {
             set => isRunning = value;
         }
         private static BaseCommandSystem commandManager;
+        private static CommandEventResult commandEventResult;
         /// <summary>
         /// test commands
         /// </summary>
@@ -22,7 +23,7 @@ namespace Examples {
             /// </summary>
             while (IsRunning) {
                 string? input = Console.ReadLine();
-                CommandProcessor.Execute(commandManager, input);
+                CommandProcessor.Execute(commandManager, commandEventResult, input);
             }
         }
         /// <summary>
@@ -31,9 +32,10 @@ namespace Examples {
         public static void SetupCommands()
         {
             commandManager = new CommandManager();
+            commandEventResult = new CommandEventResult();
 
-            CommandEventResult.onCommandAccepted += WriteLine;
-            CommandEventResult.onCommandNotFound += WriteLine;
+            commandEventResult.onCommandAccepted += WriteLine;
+            commandEventResult.onCommandNotFound += WriteLine;
             ICommand echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);

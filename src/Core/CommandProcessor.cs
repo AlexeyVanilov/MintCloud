@@ -7,7 +7,7 @@ namespace CommandSystem.Core {
     /// This class getting the command and proccesing it
     /// </summary>
     public static class CommandProcessor {
-        public static bool Execute(BaseCommandSystem commandService, string input) {
+        public static bool Execute(BaseCommandSystem commandService, CommandEventResult commandEventResult, string input) {
             if (string.IsNullOrWhiteSpace(input)) {
                 return false;
             }
@@ -21,10 +21,10 @@ namespace CommandSystem.Core {
             if(commandService.GetCommand(name, out command)) {
                 string[] args = StringUtils.Slice(parts);
                 command.Execute(args);
-                CommandEventResult.onCommandAccepted?.Invoke(Messages.commandAccepted);
+                commandEventResult.onCommandAccepted?.Invoke(Messages.commandAccepted);
                 return true;
             }
-            CommandEventResult.onCommandNotFound?.Invoke(Messages.commandNotFound);
+            commandEventResult.onCommandNotFound?.Invoke(Messages.commandNotFound);
             return false;
         }
     }
