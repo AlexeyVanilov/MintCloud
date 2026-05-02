@@ -4,7 +4,7 @@ using CommandSystem.Models;
 
 namespace CommandSystem.Core {
     /// <summary>
-    /// This class getting the command and proccesing it
+    /// This class getting the command and processing it
     /// </summary>
     public static class CommandProcessor {
         public static bool Execute(BaseCommandSystem commandService, CommandEventResult commandEventResult, string input) {
@@ -26,6 +26,10 @@ namespace CommandSystem.Core {
             }
             commandEventResult.onCommandNotFound?.Invoke(Messages.Get("onCommandNotFound"));
             return false;
+        }
+
+        public static Task<bool> AsyncExecute(BaseCommandSystem commandService, CommandEventResult commandEventResult, string input) {
+            return Task.Run(() => Execute(commandService, commandEventResult, input));
         }
     }
 }
