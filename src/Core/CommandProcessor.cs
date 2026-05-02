@@ -21,10 +21,10 @@ namespace CommandSystem.Core {
             if(commandService.GetCommand(name, out command)) {
                 string[] args = StringUtils.Slice(parts);
                 command.Execute(args);
-                commandEventResult.onCommandAccepted?.Invoke(Messages.commandAccepted);
+                commandEventResult.onCommandAccepted?.Invoke(Messages.Get("onCommandAccepted"));
                 return true;
             }
-            commandEventResult.onCommandNotFound?.Invoke(Messages.commandNotFound);
+            commandEventResult.onCommandNotFound?.Invoke(Messages.Get("onCommandNotFound"));
             return false;
         }
     }

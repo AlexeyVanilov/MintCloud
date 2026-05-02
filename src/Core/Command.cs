@@ -11,7 +11,7 @@ namespace CommandSystem.Core {
 
         public Command(string name, Action<string[]> action, string[]? aliases = null, string? description = null, string? usage = null)
         {
-            if (string.IsNullOrEmpty(name)) throw new ArgumentException(Messages.nullCommandName);
+            if (string.IsNullOrEmpty(name)) throw new ArgumentException(Messages.Get("onNullCommand"));
             _action = action ?? throw new ArgumentNullException(nameof(action));
 
             Info = new CommandInfo { Name = name, Aliases = aliases, Description = description, Usage = usage };
