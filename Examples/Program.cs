@@ -36,7 +36,7 @@ namespace Examples {
 
             commandEventResult.onCommandAccepted += WriteLine;
             commandEventResult.onCommandNotFound += WriteLine;
-            ICommand echoCmd = new Command("echo", (args) => {
+            BaseCommand echoCmd = new Command("echo", (args) => {
                 if (args.Length == 0) {
                     SetColor(ConsoleColor.Red);
                     WriteLine("Enter message!");
@@ -44,7 +44,7 @@ namespace Examples {
                 }
                 WriteLine(string.Join(" ", args));
             }, aliases: new[] {"e", "msg"});
-            ICommand exitCmd = new Command("exit", (args) => {
+            BaseCommand exitCmd = new Command("exit", (args) => {
                 IsRunning = false;
                 SetColor(ConsoleColor.Red);
                 WriteLine("Quit...");

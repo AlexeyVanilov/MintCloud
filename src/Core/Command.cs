@@ -5,9 +5,8 @@ namespace CommandSystem.Core {
     /// <summary>
     /// Command that can takes some args
     /// </summary>
-    public sealed class Command : ICommand {
+    public sealed class Command : BaseCommand {
         private readonly Action<string[]> _action;
-        public CommandInfo Info { get; }
 
         public Command(string name, Action<string[]> action, string[]? aliases = null, string? description = null, string? usage = null)
         {
@@ -16,6 +15,6 @@ namespace CommandSystem.Core {
 
             Info = new CommandInfo { Name = name, Aliases = aliases, Description = description, Usage = usage };
         }
-        public void Execute(string[] args) => _action?.Invoke(args);
+        public override void Execute(string[] args) => _action?.Invoke(args);
     }
 }

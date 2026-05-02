@@ -17,7 +17,7 @@ namespace CommandSystem.Core {
 
             string name = parts[0];
 
-            ICommand command;
+            BaseCommand command;
             if(commandService.GetCommand(name, out command)) {
                 string[] args = StringUtils.Slice(parts);
                 command.Execute(args);

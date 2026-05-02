@@ -1,8 +1,8 @@
 ﻿using CommandSystem.Models;
 
 namespace CommandSystem.Specs {
-    public interface ICommand {
-        CommandInfo Info { get; }
-        void Execute(string[] args);
+    public abstract class BaseCommand {
+        public CommandInfo Info { get; init; }
+        public abstract void Execute(string[] args);
     }
 }
