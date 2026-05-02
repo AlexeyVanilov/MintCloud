@@ -23,7 +23,7 @@ namespace Examples {
             /// </summary>
             while (IsRunning) {
                 string? input = Console.ReadLine();
-                CommandProcessor.Execute(commandManager, commandEventResult, input);
+                CommandProcessor.Execute(commandManager, input, commandEventResult);
             }
         }
         /// <summary>
